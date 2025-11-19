@@ -21,15 +21,15 @@ export function GaleriIklan() {
                 </div>
             </div>
             {/* Akhir Main Kontent */}
-
+ 
             {/* Brosur kecil */}
-            <div className="daftar_brosur" id="daftar_brosur">
+            <div>
                 <BrosurKecil />
             </div>
             {/* Akhir Brosur kecil */}
 
             {/* Komentar Pengguna */}
-            <div className="komentar_brosur" id="komentar_brosur">
+            <div className="bg-[#ececec] py-5">
                 <KomentarBox />
             </div>
             {/* Akhir Komentar Pengguna */}
