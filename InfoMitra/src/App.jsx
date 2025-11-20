@@ -1,46 +1,47 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { Header, MainLayout, Footer } from '@/Components';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 
+import { MainLayout} from '@/Components';
 import { 
   GaleriIklan, Beranda, PaketDanHarga,
   KebijakanPrivasi, SyaratDanKetentuan, CaraKerja, TentangKami,
-  KosWanitaAzka
+  KosWanitaAzka, SignIn, SignUp
 } from '@/Pages';
 
-function App() {
+
+function AnimatedRoutes() {
+  const location = useLocation();
+
   return (
-    <>
-      <Router>
-        <Header />
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/Pages" element={<MainLayout replace />}>
+          <Route path="galeri-iklan" element={<GaleriIklan />} />
+          <Route path="beranda" element={<Beranda/>}/>
+          <Route path="cara-kerja" element={<CaraKerja pages={true}/>}/>
+          <Route path="paket-dan-harga" element={<PaketDanHarga />} />
+          <Route path="tentang-kami" element={<TentangKami />} />
+          <Route path="kebijakan-privasi" element={<KebijakanPrivasi/>}/>
+          <Route path="syarat-dan-ketentuan" element={<SyaratDanKetentuan/>}/>
+          <Route index element={<Navigate to="/Pages/galeri-iklan"/>} />
+        </Route>
 
-        <Routes>
-          <Route path="/Pages" element={<MainLayout replace />}>
-            {/* Untuk header */}
-            <Route path="galeri-iklan" element={<GaleriIklan />} />
-            <Route path="beranda" element={<Beranda/>}/>
-            <Route path="cara-kerja" element={<CaraKerja pages={true}/>}/>
-            <Route path="paket-dan-harga" element={<PaketDanHarga />} />
-            <Route path="tentang-kami" element={<TentangKami />} />
-            {/* Untuk header */}
+        <Route path="/Pages/kos-azka" element={<KosWanitaAzka />} />
+        
+        <Route path="/auntifikasi/sign-in" element={<SignIn />} />
+        <Route path="/auntifikasi/sign-up" element={<SignUp />} />
 
-            {/* Untuk footer */}
-            <Route path="kebijakan-privasi" element={<KebijakanPrivasi/>}/>
-            <Route path="syarat-dan-ketentuan" element={<SyaratDanKetentuan/>}/>
-            {/* Untuk footer */}
-            
-            <Route index element={<Navigate to="/Pages/galeri-iklan"/>} />
-          </Route>
-
-          <Route path="/" element={<Navigate to="/Pages/galeri-iklan" replace />} />
-          <Route path="*" element={<Navigate to="/Pages/galeri-iklan" replace />} />
-
-          <Route path="/Pages/kos-azka" element={<KosWanitaAzka />} />
-        </Routes>
-
-        <Footer />
-      </Router>
-    </>
-  )
+        <Route path="/" element={<Navigate to="/Pages/galeri-iklan" replace />} />
+        <Route path="*" element={<Navigate to="/Pages/galeri-iklan" replace />} />
+      </Routes>
+    </AnimatePresence>
+  );
 }
 
-export default App
+export default function App() {
+  return (
+    <Router> 
+      <AnimatedRoutes />
+    </Router>
+  );
+}

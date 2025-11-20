@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import { logoSrc, anonimusIcon } from "@/assets/logo";
-import { ProfilTamu } from "@/Components";
+import { logoSrc } from "@/assets/logo";
 
 export function MobileMenu({ isOpen, toggleMenu, closeAll, navLinks }) {
     return (
@@ -52,13 +51,15 @@ export function LaptopNavigasi({ navLinks }) {
     );
 }
   
-export function UserProfile({ isProfileDropdownOpen, toggleProfileDropdown, closeAllDropdowns }) {
-    return (
-        <section>
-            <div onClick={toggleProfileDropdown} className="bg-white text-white rounded-full mr-5 md:mr-10 size-9 object-contain overflow-hidden flex justify-center items-center hover:cursor-pointer border-2" >
-                <img src={anonimusIcon} alt="Gambar Pengguna" className="h-11" />
-            </div>
-            <ProfilTamu isProfileDropdownOpen={isProfileDropdownOpen} closeAllDropdowns={closeAllDropdowns } />
+export function LogIn() {
+    return(
+        <section className='flex gap-3 mr-8'>
+            <Link to={'/auntifikasi/sign-in'}>
+                <div className='py-1 px-5 rounded-lg text-base cursor-pointer text-white font-medium bg-[var(--color-warning)] border-2 border-[var(--color-warning)] hover:border-white'>Sign In</div>
+            </Link>
+            <Link to={'/auntifikasi/sign-up'}>
+                <div className='py-1 px-5 rounded-lg text-base cursor-pointer text-white font-medium border-2 border-[var(--color-warning)] hover:border-white'>Sign Up</div>
+            </Link>
         </section>
     );
 }

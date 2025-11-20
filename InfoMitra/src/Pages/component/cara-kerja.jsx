@@ -17,7 +17,7 @@ export function CaraKerja({pages}) {
 
     return (
         <>
-            <motion.section className={`min-h-screen flex text-white bg-white ${pb}`} variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+            <motion.section className={`min-h-screen flex text-white bg-white ${pb}`} variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
                 <div className='my-auto'>
                     <motion.section variants={itemVariants}>
                         <div className="text-center font-bold text-black text-2xl md:text-3xl px-0 md:px-30 py-5 md:mt-5">

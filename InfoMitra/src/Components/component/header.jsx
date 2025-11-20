@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { LogoUsaha, LaptopNavigasi, MobileMenu, UserProfile } from '@/Components';
+import { LogoUsaha, LaptopNavigasi, MobileMenu, LogIn } from '@/Components';
 
 const navLinks = [
     { to: '/Pages/beranda', text: 'Beranda' },
@@ -39,8 +39,10 @@ export function Header() {
             <div className="flex flex-row items-center space-x-4 lg:space-x-9">
                 <LaptopNavigasi navLinks={navLinks} />
                 <MobileMenu isOpen={isMobileMenuOpen} toggleMenu={toggleMobileMenu} closeAll={closeAllDropdowns} navLinks={navLinks}/>
-                <UserProfile isProfileDropdownOpen={isProfileDropdownOpen} toggleProfileDropdown={toggleProfileDropdown} closeAllDropdowns={closeAllDropdowns} />
+                {/* <UserProfile isProfileDropdownOpen={isProfileDropdownOpen} toggleProfileDropdown={toggleProfileDropdown} closeAllDropdowns={closeAllDropdowns} /> */}
             </div>
+            
+            <LogIn />
             
         </header>
     );

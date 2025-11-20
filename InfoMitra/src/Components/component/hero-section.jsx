@@ -33,7 +33,7 @@ export const TentangKami = () => {
 export function HeroSection({beranda}){
     return(
         <>
-            <motion.section className='h-screen flex text-gray-300 bg-[var(--color-base-100)]' variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+            <motion.section className='h-screen flex text-gray-300 bg-[var(--color-base-100)]' variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
                 <div className='my-auto'>
                     <motion.h1 className="text-center font-bold text-2xl md:text-5xl px-5 md:px-30 pb-5" variants={itemVariants} >
                         Promosi Digital yang Mudah & Terjangkau untuk UMKM
@@ -61,7 +61,7 @@ export function HeroSection({beranda}){
 export function NilaiNilai(){
     return(
         <>
-            <motion.section className=' flex text-white bg-[#ececec] py-10' variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+            <motion.section className=' flex text-white bg-[#ececec] py-10' variants={containerVariants} initial="hidden" animate="visible" exit="hidden">
                 <div className='my-auto'>
                     <motion.section variants={itemVariants}>
                         <div className="text-center font-bold text-black text-2xl md:text-3xl px-0 md:px-30 py-5">
