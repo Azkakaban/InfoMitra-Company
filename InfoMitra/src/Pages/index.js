@@ -11,10 +11,11 @@ import { SignIn } from "./auntifikasi/sign-in.jsx";
 import { SignUp } from "./auntifikasi/sign-up.jsx";
 
 import { KosWanitaAzka } from "./costumers/kos-wanita-azka.jsx";
+import { RyaClass } from "./costumers/RyaClass.jsx";
 
 export {
     GaleriIklan, Beranda,
     KebijakanPrivasi, SyaratDanKetentuan,  CaraKerja, PaketDanHarga,
-    TentangKami, KosWanitaAzka,
+    TentangKami, KosWanitaAzka, RyaClass, 
     SignIn, SignUp
 }

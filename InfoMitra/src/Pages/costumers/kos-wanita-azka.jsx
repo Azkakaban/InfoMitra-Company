@@ -4,6 +4,7 @@ import { fotoTeras, fotoRumah, fotoRumah1, fotoKamar } from "@/assets/KosWanitaA
 export function KosWanitaAzka() {
   return (
     <div>
+      <div className="kos-wanita-azka-page">
       <div className="header">
         <div className="kiri">
           <div className="container-foto">
@@ -84,6 +85,7 @@ export function KosWanitaAzka() {
           <p>Dekat dengan kampus, minimarket, dan halte bus</p>
         </div>
 
+      </div>
       </div>
     </div>
   );

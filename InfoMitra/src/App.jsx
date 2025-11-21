@@ -5,7 +5,7 @@ import { MainLayout} from '@/Components';
 import { 
   GaleriIklan, Beranda, PaketDanHarga,
   KebijakanPrivasi, SyaratDanKetentuan, CaraKerja, TentangKami,
-  KosWanitaAzka, SignIn, SignUp
+  KosWanitaAzka, RyaClass, SignIn, SignUp
 } from '@/Pages';
 
 
@@ -24,9 +24,10 @@ function AnimatedRoutes() {
           <Route path="kebijakan-privasi" element={<KebijakanPrivasi/>}/>
           <Route path="syarat-dan-ketentuan" element={<SyaratDanKetentuan/>}/>
           <Route index element={<Navigate to="/Pages/galeri-iklan"/>} />
+          <Route path="/Pages/kos-azka" element={<KosWanitaAzka />} />
+          <Route path="/Pages/RyaClass" element={<RyaClass />} />
         </Route>
 
-        <Route path="/Pages/kos-azka" element={<KosWanitaAzka />} />
         
         <Route path="/auntifikasi/sign-in" element={<SignIn />} />
         <Route path="/auntifikasi/sign-up" element={<SignUp />} />
