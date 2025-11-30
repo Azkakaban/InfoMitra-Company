@@ -7,7 +7,7 @@ import {
     ImageIcon, AlertCircle, ArrowLeft, Home, X, MessageSquare 
 } from 'lucide-react';
 
-import { TestimoniModal } from '@/components';
+import { TestimoniModal } from '@/Components';
 
 export function UserDetailProfil({ user, setUser }){
     const navigate = useNavigate(); 
