@@ -111,7 +111,7 @@ export function KomentarUser() {
                 </div>
             ) : (
                 <div className="grid grid-cols-1 gap-4">
-                    {filteredList.map((item) => {
+                    {Array.isArray(filteredList) && filteredList.map((item) => {
                         const userName = item.user_nama || item.nama || "User";
                         const userRole = item.user_role || item.role || "user";
                         const userEmail = item.email || "Email tidak tersedia";

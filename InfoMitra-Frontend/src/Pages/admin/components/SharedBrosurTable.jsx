@@ -198,7 +198,7 @@ export function SharedBrosurTable({ title, filterRule, badgeLabel }) {
                         ) : filteredData.length === 0 ? (
                             <tr><td colSpan="7" className="text-center py-10 text-gray-400">{searchTerm ? `Tidak ditemukan data "${searchTerm}"` : `Belum ada ${title.toLowerCase()}.`}</td></tr>
                         ) : (
-                            filteredData.map((item, index) => {
+                            Array.isArray(filteredData) && filteredData.map((item, index) => {
                                 const status = getStatusInfo(item.tanggal_berakhir);
                                 const isEven = index % 2 === 0;
                                 
