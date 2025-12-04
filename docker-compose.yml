@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:15
+    container_name: infomitra-company-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: azka123
+      POSTGRES_DB: infomitra
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  backend:
+    build:
+      context: ./infomitra-backend
+      dockerfile: Dockerfile
+    container_name: infomitra-company-backend
+    restart: always
+    env_file:
+      - ./infomitra-backend/.env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

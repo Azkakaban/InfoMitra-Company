@@ -2,37 +2,31 @@ import pg from 'pg';
 import dotenv from 'dotenv';
 
 dotenv.config();
-
 const { Pool } = pg;
 
-const isProduction = process.env.NODE_ENV === 'production';
-const connectionString = process.env.DATABASE_URL || process.env.POSTGRES_URL;
-
-const dbConfig = connectionString
-    ? {
-        connectionString: connectionString,
-        ssl: {
-            rejectUnauthorized: false,
-        },
-    }
-    : {
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME,
-        port: process.env.DB_PORT,
-        ssl: false, 
-    };
-
-const pool = new Pool(dbConfig);
-
-pool.connect((err) => {
-    if (err) {
-        console.error('Koneksi Database Gagal:', err.message);
-    } 
-    else {
-        console.log(`Terhubung ke Database (${isProduction ? 'Cloud/Railway' : 'Lokal'})`);
-    }
+const pool = new Pool({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  ssl: false,
 });
+
+const connectWithRetry = async () => {
+  let connected = false;
+  while (!connected) {
+    try {
+      await pool.connect();
+      console.log('Terhubung ke Database');
+      connected = true;
+    } catch (err) {
+      console.error('Gagal konek DB, retry 5 detik lagi...', err.message);
+      await new Promise(res => setTimeout(res, 5000));
+    }
+  }
+};
+
+connectWithRetry();
 
 export default pool;
